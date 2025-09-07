@@ -1,6 +1,6 @@
 # Uncomment the required imports before adding the code
 from .models import CarMake, CarModel
-from django.shortcuts import render
+# from django.shortcuts import render
 # from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 # from django.shortcuts import get_object_or_404, render, redirect
@@ -33,7 +33,7 @@ def get_cars(request):
     cars = []
     for car_model in car_models:
         cars.append({
-            "CarModel": car_model.name, 
+            "CarModel": car_model.name,
             "CarMake": car_model.car_make.name
         })
     return JsonResponse({"CarModels": cars})
@@ -104,7 +104,8 @@ def registration(request):
         return JsonResponse(data)
 
 
-# Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# Update the `get_dealerships` render list of dealerships all by default,
+# particular state if state is passed
 def get_dealerships(request, state="All"):
     if (state == "All"):
         endpoint = "/fetchDealers"
